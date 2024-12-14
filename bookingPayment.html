@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resort Booking</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-br from-purple-100 to-blue-50 font-sans">
+
+  <!-- Header -->
+  <header class="bg-gradient-to-r from-blue-600 to-purple-700 text-white py-6 text-center shadow-lg">
+    <h1 class="text-3xl font-bold">Resort Booking</h1>
+    <p class="mt-2 text-lg">Plan your perfect getaway with ease.</p>
+  </header>
+
+  <!-- Main Content -->
+  <main class="max-w-3xl mx-auto mt-8 p-8 bg-white rounded-lg shadow-lg">
+    <form id="bookingForm" class="space-y-6">
+      <!-- Name -->
+      <div>
+        <label for="name" class="block text-gray-700 font-semibold">Full Name:</label>
+        <input type="text" id="name" name="name" required
+               class="w-full mt-1 border rounded-lg p-2 focus:ring-2 focus:ring-purple-500 focus:outline-none"
+               placeholder="Enter your full name">
+      </div>
+
+      <!-- WhatsApp Number -->
+      <div>
+        <label for="whatsapp" class="block text-gray-700 font-semibold">WhatsApp Number:</label>
+        <input type="tel" id="whatsapp" name="whatsapp" required pattern="[0-9]{10}"
+               class="w-full mt-1 border rounded-lg p-2 focus:ring-2 focus:ring-purple-500 focus:outline-none"
+               placeholder="Enter your WhatsApp number (10 digits)">
+      </div>
+
+      <!-- Contact Number -->
+      <div>
+        <label for="contact" class="block text-gray-700 font-semibold">Contact Number:</label>
+        <input type="tel" id="contact" name="contact" required pattern="[0-9]{10}"
+               class="w-full mt-1 border rounded-lg p-2 focus:ring-2 focus:ring-purple-500 focus:outline-none"
+               placeholder="Enter your contact number (10 digits)">
+      </div>
+
+      <!-- Date -->
+      <div>
+        <label for="date" class="block text-gray-700 font-semibold">Select Date:</label>
+        <input type="date" id="date" name="date" required
+               class="w-full mt-1 border rounded-lg p-2 focus:ring-2 focus:ring-purple-500 focus:outline-none">
+      </div>
+
+      <!-- Duration Type -->
+      <div>
+        <label for="durationType" class="block text-gray-700 font-semibold">Booking Duration:</label>
+        <select id="durationType" name="durationType" required
+                class="w-full mt-1 border rounded-lg p-2 focus:ring-2 focus:ring-purple-500 focus:outline-none">
+          <option value="" disabled selected>Select Days or Hours</option>
+          <option value="days">Days</option>
+          <option value="hours">Hours</option>
+        </select>
+      </div>
+
+      <!-- Duration -->
+      <div id="durationInput" class="hidden">
+        <label for="duration" class="block text-gray-700 font-semibold">Enter Duration:</label>
+        <input type="number" id="duration" name="duration" min="1" required
+               class="w-full mt-1 border rounded-lg p-2 focus:ring-2 focus:ring-purple-500 focus:outline-none"
+               placeholder="Enter number of days or hours">
+      </div>
+
+      <!-- Time -->
+      <div id="timeInput" class="hidden">
+        <label for="time" class="block text-gray-700 font-semibold">Select Time:</label>
+        <input type="time" id="time" name="time"
+               class="w-full mt-1 border rounded-lg p-2 focus:ring-2 focus:ring-purple-500 focus:outline-none">
+      </div>
+
+      <!-- Submit Button -->
+      <div>
+        <button type="button" id="submitButton"
+                class="w-full bg-gradient-to-r from-purple-500 to-blue-600 text-white py-3 rounded-lg hover:from-purple-600 hover:to-blue-700">
+          Submit Booking Request
+        </button>
+      </div>
+    </form>
+
+    <!-- Confirmation Section -->
+    <div id="confirmation" class="hidden mt-6 p-4 bg-green-100 text-green-800 rounded-lg">
+      <p class="font-semibold text-lg">Booking is being confirmed. Please wait...</p>
+      <p id="countdown" class="text-center text-2xl font-bold mt-2"></p>
+    </div>
+
+    <!-- Payment Section -->
+    <div id="payment" class="hidden mt-6 p-4 bg-yellow-100 text-yellow-800 rounded-lg">
+      <p class="font-semibold text-lg">Your booking has been confirmed!</p>
+      <p class="mt-2">Please pay the advance amount of <span id="paymentAmount" class="font-bold">₹0</span> to proceed.</p>
+      <button class="w-full mt-4 bg-gradient-to-r from-yellow-500 to-orange-500 text-white py-2 rounded-lg hover:from-yellow-600 hover:to-orange-600">
+        Pay Now
+      </button>
+    </div>
+
+    <!-- Fallback Section -->
+    <div id="fallback" class="hidden mt-6 p-4 bg-red-100 text-red-800 rounded-lg">
+      <p class="font-semibold text-lg">Booking could not be confirmed.</p>
+      <p class="mt-2">Please contact the resort at <span class="font-bold">+91 98765 43210</span> if they can adjust for you.</p>
+    </div>
+  </main>
+
+  <!-- Gallery Button -->
+  <div class="fixed bottom-4 right-4">
+    <button class="bg-gradient-to-r from-blue-500 to-purple-500 text-white p-4 rounded-full shadow-lg hover:from-blue-600 hover:to-purple-600">
+      Gallery
+    </button>
+  </div>
+
+  <!-- Script -->
+  <script>
+    const durationType = document.getElementById('durationType');
+    const durationInput = document.getElementById('durationInput');
+    const timeInput = document.getElementById('timeInput');
+    const submitButton = document.getElementById('submitButton');
+    const confirmation = document.getElementById('confirmation');
+    const countdownElement = document.getElementById('countdown');
+    const payment = document.getElementById('payment');
+    const fallback = document.getElementById('fallback');
+    const paymentAmount = document.getElementById('paymentAmount');
+
+    // Show/hide duration and time inputs based on selection
+    durationType.addEventListener('change', () => {
+      durationInput.classList.remove('hidden');
+      const value = durationType.value;
+      if (value === 'hours') {
+        timeInput.classList.remove('hidden');
+      } else {
+        timeInput.classList.add('hidden');
+      }
+    });
+
+    // Handle submission
+    submitButton.addEventListener('click', () => {
+      confirmation.classList.remove('hidden');
+      let countdown = 5;
+
+      const interval = setInterval(() => {
+        countdownElement.textContent = countdown;
+        if (countdown === 0) {
+          clearInterval(interval);
+          confirmation.classList.add('hidden');
+
+          // Simulate random booking success/failure
+          if (Math.random() > 0.5) {
+            payment.classList.remove('hidden');
+            paymentAmount.textContent = `₹${Math.floor(Math.random() * 5000 + 500)}`;
+          } else {
+            fallback.classList.remove('hidden');
+          }
+        }
+        countdown--;
+      }, 1000);
+    });
+  </script>
+</body>
+</html>

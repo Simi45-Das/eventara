@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Decoration Ideas - Eventara</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.1.2/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    /* Custom Styles */
+    .title {
+      font-family: 'Poppins', sans-serif;
+      color: #FFD700;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .profile-img {
+      width: 120px;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 4px solid #4C51BF;
+      transition: transform 0.3s ease;
+      margin: 0 auto;
+    }
+
+    .profile-img:hover {
+      transform: scale(1.1);
+    }
+
+    .details-button {
+      background-color: #4C51BF;
+      color: white;
+      padding: 0.8rem 1.5rem;
+      border-radius: 30px;
+      text-transform: uppercase;
+      font-weight: bold;
+      letter-spacing: 1px;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      display: block;
+      width: 100%;
+    }
+
+    .details-button:hover {
+      background-color: #2D3B8F;
+    }
+
+    /* 3D Rose Petals Background Effect */
+    .rose-petal-background {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      pointer-events: none;
+      background-image: url('rose.avif'); /* Replace with actual 3D rose petal image */
+      background-size: cover;
+      background-position: center;
+      animation: moveRosePetals 30s linear infinite;
+    }
+
+    @keyframes moveRosePetals {
+      0% { background-position: 0 0; }
+      100% { background-position: 100% 100%; }
+    }
+
+    /* Floating effect for expert profile */
+    .floating-background {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0; /* Ensure the floating text appears above the background */
+      pointer-events: none;
+      font-size: 5rem;
+      font-family: 'Lobster', cursive;
+      text-align: center;
+      overflow: hidden;
+      color: rgba(255, 255, 255, 0.3); /* Increased opacity for better visibility */
+    }
+
+    .floating-text {
+      position: absolute;
+      animation: floatAnimation 15s linear infinite;
+      opacity: 0.8; /* Adjusted opacity for better visibility */
+      white-space: nowrap;
+      font-size: 4rem;
+      color: rgba(255, 255, 255, 0.9); /* Clearer white text */
+    }
+
+    /* Scattered floating animation */
+    @keyframes floatAnimation {
+      0% {
+        transform: translate(0, 100vh);
+      }
+      100% {
+        transform: translate(0, -100vh);
+      }
+    }
+
+    /* Offset for floating text positions */
+    .floating-text:nth-child(1) { left: 5%; animation-delay: 0s; }
+    .floating-text:nth-child(2) { left: 25%; animation-delay: 2s; }
+    .floating-text:nth-child(3) { left: 50%; animation-delay: 4s; }
+    .floating-text:nth-child(4) { left: 75%; animation-delay: 6s; }
+    .floating-text:nth-child(5) { left: 95%; animation-delay: 8s; }
+
+  </style>
+</head>
+<body class="bg-gradient-to-r from-indigo-700 via-purple-600 to-purple-900 text-white font-sans min-h-screen">
+
+  <!-- Background 3D Rose Petals -->
+  <div class="rose-petal-background"></div>
+
+  <!-- Floating Background Text -->
+  <div class="floating-background">
+    <div class="floating-text">Elegance</div>
+    <div class="floating-text">Sophistication</div>
+    <div class="floating-text">Luxury</div>
+    <div class="floating-text">Artistry</div>
+    <div class="floating-text">Inspiration</div>
+  </div>
+
+  <div class="container mx-auto px-4 py-10">
+    <h1 class="title text-6xl text-center mb-4 tracking-widest">Eventara</h1>
+    <h2 class="text-4xl font-semibold text-center mb-10">Select Decoration Ideas by Experts</h2>
+    <p class="text-lg text-center mb-12 max-w-2xl mx-auto">
+      Discover professional decoration ideas tailored to elevate your events. Rates start from just ₹100, explore a range of styles and concepts brought to life by our expert designers.
+    </p>
+
+    <!-- Expert Profiles -->
+    <div class="grid gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+
+      <!-- Expert Card Template -->
+      <div class="card bg-white text-gray-800 rounded-lg shadow-lg p-6 transition duration-300 ease-in-out transform hover:scale-105">
+        <div class="text-center">
+          <img src="https://via.placeholder.com/150" alt="Decoration Expert Profile" class="profile-img mb-4">
+          <h3 class="text-2xl font-bold mb-1">Floral Bliss Designs</h3>
+          <p class="text-gray-600 mb-2">Rate: ₹100</p>
+          <button class="details-button mt-4">View Details</button>
+        </div>
+      </div>
+
+      <!-- Repeat Expert Card -->
+      <div class="card bg-white text-gray-800 rounded-lg shadow-lg p-6 transition duration-300 ease-in-out transform hover:scale-105">
+        <div class="text-center">
+          <img src="https://via.placeholder.com/150" alt="Decoration Expert Profile" class="profile-img mb-4">
+          <h3 class="text-2xl font-bold mb-1">Elegance Creations</h3>
+          <p class="text-gray-600 mb-2">Rate: ₹150</p>
+          <button class="details-button mt-4">View Details</button>
+        </div>
+      </div>
+
+      <!-- Additional Expert Cards as needed -->
+      
+    </div>
+  </div>
+
+</body>
+</html>

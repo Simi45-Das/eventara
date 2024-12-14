@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Catering Selection - Eventara</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.1.2/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    .title {
+      font-family: 'Poppins', sans-serif;
+      color: #FFD700;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .profile-img {
+      width: 120px;
+      height: 120px;
+      object-fit: cover;
+      object-position: center;
+      border-radius: 50%;
+      border: 4px solid #4C51BF;
+      transition: transform 0.3s ease;
+      margin: 0 auto;
+    }
+
+    .profile-img:hover {
+      transform: scale(1.1);
+    }
+
+    .details-button {
+      background-color: #4C51BF;
+      color: white;
+      padding: 0.8rem 1.5rem;
+      border-radius: 30px;
+      text-transform: uppercase;
+      font-weight: bold;
+      letter-spacing: 1px;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      display: block;
+      width: 100%;
+    }
+
+    .details-button:hover {
+      background-color: #2D3B8F;
+    }
+
+    /* Floating scattered background text */
+    .floating-background {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      pointer-events: none;
+      color: rgba(251, 251, 9, 0.914);
+      font-size: 3rem;
+      font-family: 'Lobster', cursive;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    /* Individual floating dish style */
+    .floating-text {
+      position: absolute;
+      animation: scatteredMove 15s linear infinite;
+      opacity: 0;
+      white-space: nowrap;
+    }
+
+    /* Scattered movement from bottom to top with varying X translation */
+    @keyframes scatteredMove {
+      0% {
+        transform: translateY(100vh);
+        opacity: 0;
+      }
+      10% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-100vh);
+        opacity: 0;
+      }
+    }
+
+    /* Assign different horizontal offsets and animation delays */
+    .floating-text:nth-child(1) { left: 10%; animation-delay: 0s; }
+    .floating-text:nth-child(2) { left: 25%; animation-delay: 2s; }
+    .floating-text:nth-child(3) { left: 40%; animation-delay: 4s; }
+    .floating-text:nth-child(4) { left: 55%; animation-delay: 6s; }
+    .floating-text:nth-child(5) { left: 70%; animation-delay: 8s; }
+    .floating-text:nth-child(6) { left: 85%; animation-delay: 10s; }
+    .floating-text:nth-child(7) { left: 20%; animation-delay: 1.5s; }
+    .floating-text:nth-child(8) { left: 35%; animation-delay: 3.5s; }
+    .floating-text:nth-child(9) { left: 50%; animation-delay: 5.5s; }
+    .floating-text:nth-child(10) { left: 65%; animation-delay: 7.5s; }
+    .floating-text:nth-child(11) { left: 80%; animation-delay: 9.5s; }
+    .floating-text:nth-child(12) { left: 15%; animation-delay: 11.5s; }
+  </style>
+</head>
+<body class="bg-gradient-to-r from-indigo-700 via-purple-600 to-purple-900 text-white font-sans min-h-screen">
+
+  <!-- Scattered Floating Background Text Animation -->
+  <div class="floating-background">
+    <div class="floating-text">Biryani</div>
+    <div class="floating-text">Paneer Tikka</div>
+    <div class="floating-text">Butter Chicken</div>
+    <div class="floating-text">Dal Makhani</div>
+    <div class="floating-text">Chole Bhature</div>
+    <div class="floating-text">Gulab Jamun</div>
+    <div class="floating-text">Samosa</div>
+    <div class="floating-text">Pani Puri</div>
+    <div class="floating-text">Dosa</div>
+    <div class="floating-text">Idli</div>
+    <div class="floating-text">Masala Tea</div>
+    <div class="floating-text">Mango Lassi</div>
+  </div>
+
+  <div class="container mx-auto px-4 py-10">
+    <h1 class="title text-6xl text-center mb-4 tracking-widest">Eventara</h1>
+    <h2 class="text-4xl font-semibold text-center mb-10">Select Your Perfect Catering Service</h2>
+    <p class="text-lg text-center mb-12 max-w-2xl mx-auto">
+      Explore our top-notch catering services offering a variety of dishes. Starting rates from ₹2500. Choose your preferred service and make your event memorable.
+    </p>
+
+    <!-- Catering Profiles -->
+    <div class="grid gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+
+      <!-- Catering Card Template -->
+      <div class="card bg-white text-gray-800 rounded-lg shadow-lg p-6 transition duration-300 ease-in-out transform hover:scale-105">
+        <div class="text-center">
+          <img src="https://via.placeholder.com/150" alt="Catering Profile" class="profile-img mb-4">
+          <h3 class="text-2xl font-bold mb-1">Delicious Catering</h3>
+          <p class="text-gray-600 mb-2">Starting Rate: ₹2500</p>
+          <p class="text-green-600 font-semibold">Bargaining is available</p>
+          <button class="details-button mt-4">View Details</button>
+        </div>
+      </div>
+
+      <!-- Repeat Catering Card -->
+      <div class="card bg-white text-gray-800 rounded-lg shadow-lg p-6 transition duration-300 ease-in-out transform hover:scale-105">
+        <div class="text-center">
+          <img src="https://via.placeholder.com/150" alt="Catering Profile" class="profile-img mb-4">
+          <h3 class="text-2xl font-bold mb-1">Royal Feast Catering</h3>
+          <p class="text-gray-600 mb-2">Starting Rate: ₹2700</p>
+          <p class="text-green-600 font-semibold">Bargaining is available</p>
+          <button class="details-button mt-4">View Details</button>
+        </div>
+      </div>
+
+      <!-- Additional Catering Cards as needed -->
+      
+    </div>
+  </div>
+
+</body>
+</html>

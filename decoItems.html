@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eventara - Decoration Planner</title>
+    <style>
+        /* General Styles */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #4ade80, #2563eb);
+            background-size: 200% 200%;
+            animation: gradientAnimation 10s ease infinite;
+            color: white;
+            overflow: hidden;
+            position: relative;
+            height: 100vh;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            text-align: center;
+            font-weight: bold;
+            color: white;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+            margin-top: 80px;
+            letter-spacing: 3px;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        p {
+            font-size: 1.5rem;
+            text-align: center;
+            color: #f3f4f6;
+            margin-top: 20px;
+            line-height: 1.6;
+            animation: fadeIn 2s ease-in-out 0.5s;
+        }
+
+        .input-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 40px;
+            animation: fadeIn 2s ease-in-out 1s;
+        }
+
+        .input-container input {
+            padding: 15px;
+            font-size: 18px;
+            width: 300px;
+            border: 2px solid #60a5fa;
+            border-radius: 8px;
+            background-color: #1f2937;
+            color: white;
+            text-align: center;
+            margin-right: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+            transition: 0.3s ease;
+        }
+
+        .input-container input:focus {
+            border-color: #4ade80;
+            background-color: #374151;
+        }
+
+        .input-container button {
+            padding: 15px 40px;
+            background-color: #2563eb;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 18px;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .input-container button:hover {
+            background-color: #1e40af;
+            transform: translateY(-3px);
+        }
+
+        .item-list {
+            color: #93c5fd;
+            font-size: 1.2rem;
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .item-list ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .item-list li {
+            margin: 10px 0;
+        }
+
+        .action-buttons {
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .action-buttons button {
+            margin: 10px;
+            padding: 15px 40px;
+            font-size: 18px;
+            font-weight: bold;
+            background-color: #4ade80;
+            color: #1f2937;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, background-color 0.3s ease-in-out;
+        }
+
+        .action-buttons button:hover {
+            background-color: #22c55e;
+            transform: scale(1.1);
+        }
+
+        .star {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background-color: #fff;
+            clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+            animation: moveUp 5s linear infinite;
+            opacity: 0.8;
+        }
+
+        .moon {
+            position: absolute;
+            width: 70px;
+            height: 70px;
+            background-color: #fef08a;
+            border-radius: 50%;
+            clip-path: inset(0 50% 0 0); /* Creating the half moon effect */
+            animation: moveUp 6s linear infinite;
+        }
+
+        @keyframes moveUp {
+            0% { transform: translateY(100vh); }
+            100% { transform: translateY(-100vh); }
+        }
+
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <h1>Eventara</h1>
+    <p>Share your decoration ideas below. Let’s make your event magical!</p>
+
+    <!-- Input Section -->
+    <div class="input-container">
+        <input type="text" id="decorationItem" placeholder="Enter a decoration item">
+        <button onclick="addItem()">Add Item</button>
+    </div>
+
+    <!-- Item List -->
+    <div class="item-list" id="itemList">
+        <strong>Your Decoration Items:</strong>
+        <ul id="items"></ul>
+    </div>
+
+    <!-- Action Buttons -->
+    <div class="action-buttons">
+        <button onclick="selectDeliveryAddress()">Select Delivery Address</button>
+        <button onclick="orderItems()">Order</button>
+    </div>
+
+    <!-- Stars and Moons -->
+    <script>
+        const items = [];
+        let deliveryAddressSelected = false;
+
+        function addItem() {
+            const input = document.getElementById('decorationItem');
+            const itemList = document.getElementById('items');
+
+            if (input.value.trim() !== "") {
+                items.push(input.value);
+                const listItem = document.createElement('li');
+                listItem.textContent = input.value;
+                itemList.appendChild(listItem);
+                input.value = "";
+            } else {
+                alert("Please enter a decoration item before adding.");
+            }
+        }
+
+        function selectDeliveryAddress() {
+            deliveryAddressSelected = true;
+            window.location.href = "deliveryAddress.html"; // Redirect to delivery address page
+        }
+
+        function orderItems() {
+            if (items.length < 5) {
+                alert("Please add at least 5 decoration items before proceeding.");
+                return;
+            }
+            if (!deliveryAddressSelected) {
+                alert("Please select a delivery address before placing the order.");
+                return;
+            }
+            
+            window.location.href = "deliverytime.html"; // Redirect to order confirmation page
+        }
+
+        function createMoonsAndStars() {
+            const numberOfItems = 60;
+            const body = document.body;
+
+            for (let i = 0; i < numberOfItems; i++) {
+                const itemType = Math.random() > 0.5 ? 'moon' : 'star';
+                const item = document.createElement('div');
+                item.classList.add(itemType);
+
+                item.style.left = Math.random() * 100 + "vw";
+                item.style.top = Math.random() * 100 + "vh";
+
+                const animationDuration = Math.random() * 5 + 5;
+                const animationDelay = Math.random() * 2;
+
+                item.style.animationDuration = `${animationDuration}s`;
+                item.style.animationDelay = `-${animationDelay}s`;
+
+                body.appendChild(item);
+            }
+        }
+
+        createMoonsAndStars();
+    </script>
+</body>
+</html>

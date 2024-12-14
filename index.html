@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Event Decoration Choice - Eventara</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #ff6f61, #6a5acd);
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .card {
+      background: rgba(0, 0, 0, 0.6);
+      padding: 2rem;
+      border-radius: 1rem;
+      width: 90%;
+      max-width: 500px;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .card h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      color: #ffdd57;
+    }
+
+    .option {
+      background: linear-gradient(135deg, #ff1493, #6a5acd);
+      color: #fff;
+      padding: 1rem 2rem;
+      border-radius: 0.75rem;
+      font-size: 1.25rem;
+      margin-top: 1.5rem;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      display: inline-block;
+      width: 100%;
+      text-align: center;
+    }
+
+    .option:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <h1>Choose Your Decoration Style</h1>
+    <p id="event-message" class="mb-4 text-lg text-gray-300"></p>
+
+    <!-- Options -->
+    <button class="option" onclick="selectOption('self-decorate')">I want to self-decorate</button>
+    <button class="option mt-4" onclick="selectOption('hire-professional')">I want to hire a professional</button>
+  </div>
+
+  <script>
+    // Function to retrieve the URL parameter
+    function getQueryParam(param) {
+      const urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get(param);
+    }
+
+    // Display the event type in a professional sentence
+    const eventType = getQueryParam('event-type');
+    const eventMessage = document.getElementById('event-message');
+
+    if (eventType) {
+      eventMessage.textContent = `It looks like you're planning a splendid ${eventType}. Let’s select the ideal decoration style to make your event unforgettable.`;
+    } else {
+      eventMessage.textContent = "Choose your decoration style to make your event truly memorable.";
+    }
+
+    // Handle the user's choice
+    function selectOption(choice) {
+      if (choice === 'self-decorate') {
+        window.location.href = 'selfchoice.html';
+      } else if (choice === 'hire-professional') {
+        window.location.href = 'hireProfessional.html';
+      }
+      // Redirect or perform other actions based on the choice
+    }
+  </script>
+
+</body>
+</html>

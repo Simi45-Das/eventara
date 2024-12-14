@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eventara - Shop at Home</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        function updateDynamicDetails() {
+            // Calculate cancel time
+            const currentTime = new Date();
+            const cancelTime = new Date(currentTime);
+            const hours = currentTime.getHours();
+
+            if (hours < 15) {
+                cancelTime.setHours(15, 0, 0, 0);
+            } else {
+                cancelTime.setDate(cancelTime.getDate() + 1);
+                cancelTime.setHours(15, 0, 0, 0);
+            }
+
+            document.getElementById("cancel-time").textContent = cancelTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+
+            // Set delivery date
+            const deliveryDate = new Date(currentTime);
+            deliveryDate.setDate(deliveryDate.getDate() + 1);
+            const formattedDate = deliveryDate.toLocaleDateString("en-GB"); // Format as DD/MM/YYYY
+            document.getElementById("delivery-date").textContent = `Your delivery is scheduled for tomorrow (${formattedDate}).`;
+        }
+
+        window.onload = updateDynamicDetails;
+    </script>
+</head>
+
+<body class="bg-gray-100 font-sans leading-relaxed text-gray-700">
+    <!-- Header with Branding -->
+    <header class="bg-gradient-to-r from-purple-500 to-pink-600 text-white py-6">
+        <div class="container mx-auto text-center">
+            <h1 class="text-4xl font-extrabold italic">Eventara</h1>
+            <p class="mt-2 text-lg">Your gateway to effortless shopping at home</p>
+        </div>
+    </header>
+
+    <!-- Navigation Bar -->
+    <nav class="bg-white shadow-md">
+        <div class="container mx-auto flex justify-around py-4">
+            <a href="#orders" class="text-gray-700 font-medium hover:text-purple-600">My Orders</a>
+            <a href="#add-address" class="text-gray-700 font-medium hover:text-purple-600">Add Address</a>
+            <a href="#reviews" class="text-gray-700 font-medium hover:text-purple-600">See Reviews</a>
+            <a href="#rate-us" class="text-gray-700 font-medium hover:text-purple-600">Rate Us</a>
+        </div>
+    </nav>
+
+    <main class="container mx-auto py-8 px-4">
+        <!-- Gallery Button -->
+        <section class="text-center mb-12">
+            <a href="gallery.html" class="bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-700 hover:to-indigo-800 text-white font-bold py-3 px-8 rounded-lg shadow-lg">
+                Explore Sample Products
+            </a>
+        </section>
+
+        <!-- Delivery and Payment Information -->
+        <section class="bg-white shadow-lg rounded-lg p-6 mb-8">
+            <h2 class="text-2xl font-bold mb-4 text-purple-600">Order Information</h2>
+            <p id="delivery-date" class="text-lg mb-4"></p>
+            <p class="text-lg font-medium mb-4">Delivery Address: <span class="text-gray-800">Your provided address will appear here.</span></p>
+
+            <!-- Change Delivery Date Button -->
+            <div class="mb-4">
+                <button class="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded-lg shadow-md">
+                    Change Delivery Date
+                </button>
+            </div>
+
+            <p class="mt-4 text-gray-600">Cancellation is allowed, but delivery charges are non-refundable if canceled after the deadline.</p>
+            <div class="text-gray-800 font-medium mt-4">
+                Cancel Before: <span id="cancel-time" class="font-bold text-purple-600"></span>
+            </div>
+        </section>
+
+        <!-- Payment Button -->
+        <div class="text-center">
+            <button class="bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-8 rounded-lg shadow-lg">
+                Pay ₹30
+            </button>
+        </div>
+    </main>
+
+    <footer class="bg-gray-900 text-white text-center py-6 mt-12">
+        <p>&copy; 2024 Eventara. All rights reserved.</p>
+    </footer>
+</body>
+
+</html>

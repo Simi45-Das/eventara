@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Eventara - Your Event, Your Way</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+    .custom-font {
+      font-family: 'Poppins', sans-serif;
+    }
+  </style>
+</head>
+<body class="bg-gradient-to-r from-blue-50 to-teal-200 min-h-screen flex flex-col items-center text-gray-800">
+  <!-- Header -->
+  <header class="w-full bg-teal-700 py-6 shadow-lg">
+    <div class="container mx-auto text-center">
+      <h1 class="text-5xl font-bold text-white custom-font drop-shadow-lg">Eventara</h1>
+      <p class="mt-2 text-lg text-teal-100">Your Event, Your Way</p>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="container mx-auto mt-10 px-6">
+    <!-- Introduction -->
+    <section class="text-center mb-8">
+      <h2 class="text-3xl font-semibold text-gray-800">How Do You Want to Plan Your Event?</h2>
+      <p class="mt-4 text-gray-600 text-lg">
+        At <span class="font-semibold text-teal-700">Eventara</span>, we understand that every event is unique. Do you want to select individual services like catering, photography, and design from different vendors, or would you prefer a single company to handle everything seamlessly for you? 
+        The choice is yours.
+      </p>
+    </section>
+
+    <!-- Options Section -->
+    <section class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <!-- Option 1: Individual Services -->
+      <div class="bg-white rounded-xl shadow-md p-6 border-t-4 border-blue-500 hover:shadow-xl transition">
+        <h3 class="text-2xl font-semibold text-blue-700 mb-4">Choose Individual Services</h3>
+        <p class="text-gray-700">
+          Pick and choose from our wide network of top-tier professionals. Customize your event by selecting separate services such as catering, photography, design, and entertainment based on your specific needs.
+        </p>
+        <button class="mt-4 px-6 py-2 bg-blue-500 text-white font-semibold rounded-lg hover:bg-blue-600 transition" onclick="window.location.href = 'selectServices.html';">
+          Explore Services
+        </button>
+      </div>
+
+      <!-- Option 2: One-Stop Solution -->
+      <div class="bg-white rounded-xl shadow-md p-6 border-t-4 border-green-500 hover:shadow-xl transition">
+        <h3 class="text-2xl font-semibold text-green-700 mb-4">Opt for a Complete Solution</h3>
+        <p class="text-gray-700">
+          Let us take care of everything for you. Our all-in-one event management service provides you with a seamless experience, managing every detail from start to finish.
+        </p>
+        <button class="mt-4 px-6 py-2 bg-green-500 text-white font-semibold rounded-lg hover:bg-green-600 transition" onclick="window.location.href = 'companySelection.html';">
+          Book a Complete Package
+        </button>
+      </div>
+    </section>
+
+    <!-- Why Choose Eventara Section -->
+    <section class="mt-10">
+      <h2 class="text-3xl font-semibold text-gray-800 text-center">Why Choose Eventara?</h2>
+      <p class="mt-4 text-gray-600 text-center">
+        Whether you want flexibility or simplicity, <span class="font-semibold text-teal-700">Eventara</span> is here to make your event planning stress-free. Choose what works best for you and leave the rest to us.
+      </p>
+      <div class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- Flexibility -->
+        <div class="bg-white rounded-xl shadow-md p-6 border-t-4 border-yellow-500 hover:shadow-xl transition">
+          <h3 class="text-2xl font-semibold text-yellow-700 mb-4">Flexibility</h3>
+          <p class="text-gray-700">
+            Customize your event by selecting only the services you need.
+          </p>
+        </div>
+
+        <!-- Simplicity -->
+        <div class="bg-white rounded-xl shadow-md p-6 border-t-4 border-purple-500 hover:shadow-xl transition">
+          <h3 class="text-2xl font-semibold text-purple-700 mb-4">Simplicity</h3>
+          <p class="text-gray-700">
+            Streamline the process with our all-in-one event management package.
+          </p>
+        </div>
+
+        <!-- Professional Excellence -->
+        <div class="bg-white rounded-xl shadow-md p-6 border-t-4 border-red-500 hover:shadow-xl transition">
+          <h3 class="text-2xl font-semibold text-red-700 mb-4">Professional Excellence</h3>
+          <p class="text-gray-700">
+            Work with trusted professionals who deliver exceptional results every time.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="w-full bg-gray-800 py-6 mt-10 text-center text-gray-400 text-sm">
+    &copy; 2024 Eventara. Empowering you to plan the perfect event.
+  </footer>
+</body>
+</html>

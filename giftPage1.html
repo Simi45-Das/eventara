@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Eventara - Unique Gifts for Your Loved Ones</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+    .custom-font {
+      font-family: 'Poppins', sans-serif;
+    }
+
+    /* Animation for gift boxes */
+    @keyframes float {
+      0% {
+        transform: translateY(100%);
+        opacity: 0;
+      }
+      20% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-100%);
+        opacity: 0;
+      }
+    }
+
+    /* Gift box styles */
+    .gift-box {
+      position: absolute;
+      width: 40px;
+      height: 40px;
+      background: url('https://cdn-icons-png.flaticon.com/512/2143/2143135.png') no-repeat center;
+      background-size: contain;
+      animation: float linear infinite;
+    }
+  </style>
+</head>
+<body class="relative bg-gradient-to-r from-teal-50 to-blue-200 min-h-screen overflow-hidden flex flex-col items-center justify-center text-gray-800">
+  <!-- Dynamic Gift Boxes Container -->
+  <div id="gift-container" class="absolute inset-0 pointer-events-none"></div>
+
+  <!-- Header -->
+  <header class="relative z-10 text-center mb-10">
+    <h1 class="text-5xl font-extrabold text-teal-700 custom-font drop-shadow-lg">Eventara</h1>
+    <p class="mt-2 text-lg">Discover stylish and unique gifts for your beloved ones</p>
+  </header>
+
+  <!-- Main Content -->
+  <main class="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-8 px-6 w-full max-w-6xl">
+    <!-- Shop at Home Section -->
+    <section class="bg-white bg-opacity-90 rounded-xl shadow-2xl p-8 border border-yellow-400">
+      <h2 class="text-2xl font-semibold text-yellow-700 mb-4">Shop at Home</h2>
+      <p class="text-gray-700 mb-6">
+        Relax and enjoy a personalized shopping experience from the comfort of your home. Our curated collection ensures you’ll find something special for every occasion.  
+        <span class="font-semibold text-yellow-600">Items from local vendors are specially marked, so by shopping here, you also support poor and local communities.</span>
+      </p>
+      <button class="px-6 py-3 bg-yellow-500 text-white font-semibold rounded-lg hover:bg-yellow-600 transition" onclick="window.location.href='deliverytime.html'">
+        Call to Shop at Home
+      </button>
+    </section>
+
+    <!-- Online Shopping Section -->
+    <section class="bg-white bg-opacity-90 rounded-xl shadow-2xl p-8 border border-purple-400">
+      <h2 class="text-2xl font-semibold text-purple-700 mb-4">Online Shopping</h2>
+      <p class="text-gray-700 mb-6">
+        Explore our wide range of exclusive gifts online. Shop with ease and convenience while enjoying a seamless experience.  
+        <span class="font-semibold text-purple-600">Look for the tag indicating local vendor items and make a meaningful purchase to help those in need.</span>
+      </p>
+      <button class="px-6 py-3 bg-purple-500 text-white font-semibold rounded-lg hover:bg-purple-600 transition" onclick="window.location.href='onlineShopgiftP2.html'">
+        Start Online Shopping
+      </button>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="relative z-10 mt-10 text-gray-600 text-sm">
+    &copy; 2024 Eventara. Crafted with love to bring joy to your loved ones.
+  </footer>
+
+  <script>
+    // Function to generate random gift boxes
+    function generateGiftBoxes() {
+      const container = document.getElementById('gift-container');
+      const numberOfGifts = 50; // Adjust the number of gift boxes
+
+      for (let i = 0; i < numberOfGifts; i++) {
+        const gift = document.createElement('div');
+        gift.className = 'gift-box';
+
+        // Random horizontal position and animation duration
+        gift.style.left = `${Math.random() * 100}%`; // Random horizontal position
+        gift.style.animationDuration = `${5 + Math.random() * 5}s`; // Random animation duration
+        gift.style.animationDelay = `${Math.random() * 5}s`; // Random animation delay
+
+        container.appendChild(gift);
+      }
+    }
+
+    // Call the function to generate gift boxes
+    generateGiftBoxes();
+  </script>
+</body>
+</html>

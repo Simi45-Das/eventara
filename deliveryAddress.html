@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delivery Address</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-r from-blue-50 to-gray-100 min-h-screen flex items-center justify-center">
+    <div class="bg-white shadow-xl rounded-lg p-8 w-11/12 max-w-3xl">
+        <h1 class="text-3xl font-extrabold text-gray-800 text-center mb-8">Delivery Address</h1>
+
+        <!-- Display Existing Addresses -->
+        <div id="addressList" class="mb-8 bg-gray-50 border border-gray-200 p-6 rounded-lg">
+            <p class="text-gray-500 text-center text-lg">No address added yet. Click the button below to add one.</p>
+        </div>
+
+        <!-- Add Address Button -->
+        <div class="flex justify-center mb-8">
+            <button 
+                onclick="showAddAddressForm()"
+                class="bg-gradient-to-r from-blue-500 to-blue-700 text-white font-semibold px-8 py-3 rounded-full hover:shadow-lg transform hover:scale-105 transition">
+                Add Address
+            </button>
+        </div>
+
+        <!-- Add Address Form -->
+        <div id="addAddressForm" class="hidden">
+            <h2 class="text-xl font-bold text-gray-700 mb-4">Add New Address</h2>
+            <form onsubmit="addAddress(event)" class="space-y-6 bg-gray-50 border border-gray-200 p-6 rounded-lg">
+                <!-- Full Name -->
+                <div>
+                    <label for="fullName" class="block text-sm font-medium text-gray-700">Full Name</label>
+                    <input 
+                        type="text" 
+                        id="fullName" 
+                        placeholder="Enter your full name" 
+                        required
+                        class="mt-2 block w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400">
+                </div>
+
+                <!-- Phone Number -->
+                <div>
+                    <label for="phoneNumber" class="block text-sm font-medium text-gray-700">Phone Number</label>
+                    <input 
+                        type="tel" 
+                        id="phoneNumber" 
+                        placeholder="Enter your phone number" 
+                        required
+                        class="mt-2 block w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400">
+                </div>
+
+                <!-- Alternative Phone Number -->
+                <div>
+                    <label for="altPhoneNumber" class="block text-sm font-medium text-gray-700">Alternative Phone Number (Optional)</label>
+                    <input 
+                        type="tel" 
+                        id="altPhoneNumber" 
+                        placeholder="Enter an alternative phone number" 
+                        class="mt-2 block w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400">
+                </div>
+
+                <!-- Pincode -->
+                <div>
+                    <label for="pincode" class="block text-sm font-medium text-gray-700">Pincode</label>
+                    <input 
+                        type="text" 
+                        id="pincode" 
+                        placeholder="Enter your pincode" 
+                        required
+                        class="mt-2 block w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400">
+                </div>
+
+                <!-- State and City -->
+                <div class="flex space-x-4">
+                    <div class="w-1/2">
+                        <label for="state" class="block text-sm font-medium text-gray-700">State</label>
+                        <input 
+                            type="text" 
+                            id="state" 
+                            placeholder="Enter your state" 
+                            required
+                            class="mt-2 block w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400">
+                    </div>
+                    <div class="w-1/2">
+                        <label for="city" class="block text-sm font-medium text-gray-700">City</label>
+                        <input 
+                            type="text" 
+                            id="city" 
+                            placeholder="Enter your city" 
+                            required
+                            class="mt-2 block w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400">
+                    </div>
+                </div>
+
+                <!-- Address Details -->
+                <div>
+                    <label for="houseNo" class="block text-sm font-medium text-gray-700">House No./Building Name</label>
+                    <input 
+                        type="text" 
+                        id="houseNo" 
+                        placeholder="Enter your house number or building name" 
+                        required
+                        class="mt-2 block w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400">
+                </div>
+                <div>
+                    <label for="roadName" class="block text-sm font-medium text-gray-700">Road Name, Area, Colony</label>
+                    <input 
+                        type="text" 
+                        id="roadName" 
+                        placeholder="Enter road name, area, or colony" 
+                        required
+                        class="mt-2 block w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400">
+                </div>
+                <div>
+                    <label for="landmark" class="block text-sm font-medium text-gray-700">Nearby Famous Shop/Mall/Landmark (Optional)</label>
+                    <input 
+                        type="text" 
+                        id="landmark" 
+                        placeholder="Enter nearby famous shop, mall, or landmark" 
+                        class="mt-2 block w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400">
+                </div>
+
+                <!-- Address Type -->
+                <div>
+                    <label for="addressType" class="block text-sm font-medium text-gray-700">Type of Address</label>
+                    <select 
+                        id="addressType" 
+                        required
+                        class="mt-2 block w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400">
+                        <option value="Home">Home</option>
+                        <option value="Work">Work</option>
+                    </select>
+                </div>
+
+                <!-- Save Address Button -->
+                <div class="flex justify-center">
+                    <button 
+                        type="submit" 
+                        class="bg-gradient-to-r from-green-500 to-green-700 text-white font-semibold px-8 py-3 rounded-full hover:shadow-lg transform hover:scale-105 transition">
+                        Save Address
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        const addressList = document.getElementById('addressList');
+        const addAddressForm = document.getElementById('addAddressForm');
+
+        const addresses = [];
+
+        function showAddAddressForm() {
+            addAddressForm.classList.remove('hidden');
+        }
+
+        function addAddress(event) {
+            event.preventDefault();
+
+            const fullName = document.getElementById('fullName').value.trim();
+            const phoneNumber = document.getElementById('phoneNumber').value.trim();
+            const altPhoneNumber = document.getElementById('altPhoneNumber').value.trim();
+            const pincode = document.getElementById('pincode').value.trim();
+            const state = document.getElementById('state').value.trim();
+            const city = document.getElementById('city').value.trim();
+            const houseNo = document.getElementById('houseNo').value.trim();
+            const roadName = document.getElementById('roadName').value.trim();
+            const landmark = document.getElementById('landmark').value.trim();
+            const addressType = document.getElementById('addressType').value;
+
+            addresses.push({ fullName, phoneNumber, altPhoneNumber, pincode, state, city, houseNo, roadName, landmark, addressType });
+            renderAddressList();
+
+            // Reset and hide form
+            event.target.reset();
+            addAddressForm.classList.add('hidden');
+        }
+
+        function renderAddressList() {
+            if (addresses.length === 0) {
+                addressList.innerHTML = `<p class="text-gray-500 text-center text-lg">No address added yet.</p>`;
+                return;
+            }
+
+            addressList.innerHTML = `
+                <ul class="space-y-4">
+                    ${addresses.map(address => `
+                        <li class="bg-white border border-gray-200 shadow-sm p-4 rounded-lg">
+                            <p><strong>Name:</strong> ${address.fullName}</p>
+                            <p><strong>Phone:</strong> ${address.phoneNumber}</p>
+                            <p><strong>Alt Phone:</strong> ${address.altPhoneNumber || 'N/A'}</p>
+                            <p><strong>Pincode:</strong> ${address.pincode}</p>
+                            <p><strong>State:</strong> ${address.state}, <strong>City:</strong> ${address.city}</p>
+                            <p><strong>House:</strong> ${address.houseNo}</p>
+                            <p><strong>Road:</strong> ${address.roadName}</p>
+                            <p><strong>Landmark:</strong> ${address.landmark || 'N/A'}</p>
+                            <p><strong>Type:</strong> ${address.addressType}</p>
+                        </li>
+                    `).join('')}
+                </ul>
+            `;
+        }
+    </script>
+</body>
+</html>
